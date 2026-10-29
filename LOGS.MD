@@ -1,0 +1,39 @@
+# Registro de Atividades (LOGS)
+
+## Task 1.1 - Inicialização do Projeto Backend e Configuração TypeScript
+- **Data:** 2026-10-29
+- **Branch:** `feat/fase1-setup-backend-banco`
+- **O que foi feito:**
+  - Inicializada a estrutura do servidor backend em Node.js com TypeScript e Express.
+  - Instaladas as dependências base (`express`, `cors`, `dotenv`, `zod`, `bcryptjs`, `jsonwebtoken`) e respectivas tipagens/ferramentas (`typescript`, `tsx`, `@types/*`).
+  - Configurado `app.ts` com suporte a JSON, CORS e rota de healthcheck (`GET /health`).
+  - Configurado `server.ts` carregando variáveis de ambiente e iniciando o servidor HTTP.
+  - Atualizado `.gitignore` para ignorar `node_modules/`, `dist/` e `.env`.
+- **Arquivos criados:**
+  - `backend/package.json`
+  - `backend/package-lock.json`
+  - `backend/tsconfig.json`
+  - `backend/.env.example`
+  - `backend/src/app.ts`
+  - `backend/src/server.ts`
+- **Arquivos modificados:**
+  - `.gitignore`
+  - `LOGS.md`
+
+## Task 1.2 - Modelagem do Banco de Dados (PostgreSQL + Prisma) e Seed Master
+- **Data:** 2026-10-29
+- **Branch:** `feat/fase1-setup-backend-banco`
+- **O que foi feito:**
+  - Instalado Prisma ORM (`prisma` e `@prisma/client` v6) para PostgreSQL e gerado o Prisma Client.
+  - Modelado `schema.prisma` com os enums `Perfil`, `TipoEntidade` e `StatusSolicitacao`, além dos models `Usuario`, `Motorista`, `Veiculo` (com `responsavel_id` opcional referenciando `Motorista` na relação `1:N`) e `SolicitacaoReativacao`.
+  - Criada instância compartilhada do `PrismaClient` em `src/config/database.ts`.
+  - Implementado `prisma/seed.ts` idempotente (`upsert`) para criação do usuário `MASTER` com senha hasheada via `bcryptjs`, além de configurar o comando de seed no `package.json` e variáveis opcionais no `.env.example`.
+- **Arquivos criados:**
+  - `backend/prisma/schema.prisma`
+  - `backend/prisma/seed.ts`
+  - `backend/src/config/database.ts`
+- **Arquivos modificados:**
+  - `backend/package.json`
+  - `backend/package-lock.json`
+  - `backend/.env.example`
+  - `LOGS.md`

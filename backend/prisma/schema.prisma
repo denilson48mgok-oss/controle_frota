@@ -1,0 +1,73 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Perfil {
+  MASTER
+  ADMIN
+  GERAL
+}
+
+enum TipoEntidade {
+  USUARIO
+  MOTORISTA
+  VEICULO
+}
+
+enum StatusSolicitacao {
+  PENDENTE
+  APROVADA
+  REJEITADA
+}
+
+model Usuario {
+  id           Int                     @id @default(autoincrement())
+  login        String                  @unique
+  senha        String
+  nome         String
+  cpf          String                  @unique
+  ativo        Boolean                 @default(true)
+  perfil       Perfil                  @default(GERAL)
+  solicitacoes SolicitacaoReativacao[]
+}
+
+model Motorista {
+  id             Int       @id @default(autoincrement())
+  ativo          Boolean   @default(true)
+  nome           String
+  cpf            String    @unique
+  num_cnh        String    @unique
+  vencimento_cnh DateTime
+  veiculos       Veiculo[]
+}
+
+model Veiculo {
+  id             Int        @id @default(autoincrement())
+  ativo          Boolean    @default(true)
+  marca          String
+  modelo         String
+  placa          String     @unique
+  chassi         String     @unique
+  renavam        String     @unique
+  ano_modelo     Int
+  data_ipva      DateTime?
+  valor_ipva     Decimal?   @db.Decimal(10, 2)
+  responsavel_id Int?
+  responsavel    Motorista? @relation(fields: [responsavel_id], references: [id])
+}
+
+model SolicitacaoReativacao {
+  id             Int               @id @default(autoincrement())
+  tipo_entidade  TipoEntidade
+  entidade_id    Int
+  motivo         String
+  status         StatusSolicitacao @default(PENDENTE)
+  solicitante_id Int
+  solicitante    Usuario           @relation(fields: [solicitante_id], references: [id])
+  criado_em      DateTime          @default(now())
+}
