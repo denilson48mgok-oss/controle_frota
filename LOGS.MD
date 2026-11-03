@@ -52,3 +52,21 @@
   - `backend/src/middlewares/role.middleware.ts`
 - **Arquivos modificados:**
   - `LOGS.md`
+
+## Task 2.2 - Módulo de Usuários (Repository, Service, Controller, Zod)
+- **Data:** 2026-11-03
+- **Branch:** `feat/fase2-autenticacao-usuarios`
+- **O que foi feito:**
+  - Criados os schemas Zod (`loginSchema`, `createUsuarioSchema`, `updateUsuarioSchema`) para validação de dados e normalização de CPF.
+  - Implementado `UsuarioRepository` com consultas seguras omitindo hash de senha nas respostas públicas.
+  - Implementado `UsuarioService` com autenticação (`POST /auth/login`), regras de hierarquia na criação/edição (`MASTER` cria `ADMIN`/`GERAL`, `ADMIN` cria apenas `GERAL`, bloqueio de criação/atribuição `MASTER` via API), bloqueio de edição de usuários com `ativo === false` e baixa lógica (`ativo = false`).
+  - Implementados `UsuarioController` e `usuario.routes.ts` e registradas as rotas `/auth` e `/usuarios` em `src/app.ts`.
+- **Arquivos criados:**
+  - `backend/src/modules/usuarios/usuario.schema.ts`
+  - `backend/src/modules/usuarios/usuario.repository.ts`
+  - `backend/src/modules/usuarios/usuario.service.ts`
+  - `backend/src/modules/usuarios/usuario.controller.ts`
+  - `backend/src/modules/usuarios/usuario.routes.ts`
+- **Arquivos modificados:**
+  - `backend/src/app.ts`
+  - `LOGS.md`
