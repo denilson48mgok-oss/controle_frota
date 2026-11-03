@@ -118,3 +118,21 @@
 - **Arquivos modificados:**
   - `backend/src/app.ts`
   - `LOGS.md`
+
+## Task 3.4 - Fluxo de Solicitação e Revogação de Status Inativo
+- **Data:** 2026-11-03
+- **Branch:** `feat/fase3-dominio-frota`
+- **O que foi feito:**
+  - Criados os schemas Zod (`createReativacaoSchema`, `entidadeParamSchema`) validando o tipo de entidade (`USUARIO`, `MOTORISTA`, `VEICULO`), o ID da entidade e o motivo.
+  - Implementado `ReativacaoRepository` para criação, listagem e atualização de solicitações na tabela `SolicitacaoReativacao`.
+  - Implementado `ReativacaoService` permitindo abertura de solicitação por qualquer usuário autenticado (`POST /reativacoes`), aprovação/rejeição restrita a `ADMIN` e `MASTER` (`PATCH /reativacoes/:id/aprovar` e `PATCH /reativacoes/:id/rejeitar`) alterando `ativo = true` na entidade correspondente, e revogação direta de inatividade (`PATCH /:entidade/:id/reativar`) restrita a `ADMIN` e `MASTER`.
+  - Implementados `ReativacaoController` e `reativacao.routes.ts` e registradas as rotas em `src/app.ts`.
+- **Arquivos criados:**
+  - `backend/src/modules/reativacoes/reativacao.schema.ts`
+  - `backend/src/modules/reativacoes/reativacao.repository.ts`
+  - `backend/src/modules/reativacoes/reativacao.service.ts`
+  - `backend/src/modules/reativacoes/reativacao.controller.ts`
+  - `backend/src/modules/reativacoes/reativacao.routes.ts`
+- **Arquivos modificados:**
+  - `backend/src/app.ts`
+  - `LOGS.md`
