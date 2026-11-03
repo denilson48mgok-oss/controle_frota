@@ -151,3 +151,17 @@
   - `frontend/js/auth.js`
 - **Arquivos modificados:**
   - `LOGS.md`
+
+## Task 4.2 - Dashboard de Frotas (Veículos, Motoristas e Calculadora FIPE/IPVA)
+- **Data:** 2026-11-03
+- **Branch:** `feat/fase4-frontend-web`
+- **O que foi feito:**
+  - Criado `frontend/dashboard.html` com seções de gerenciamento e listagem de veículos e motoristas, além de prévia de IPVA (4% sobre o valor venal e vencimento pelo final da placa).
+  - Implementados `frontend/js/veiculos.js` e `frontend/js/motoristas.js` exibindo placa, modelo, responsável, status (`Ativo`/`Inativo`), data/valor estimado do próximo IPVA e veículos vinculados a cada motorista.
+  - Desabilitado o botão `Editar` para registros inativos (`ativo === false`) e exibido o botão `Solicitar Reativação` para usuários `GERAL` ou `Reativar` direto para `ADMIN`/`MASTER`.
+- **Arquivos criados:**
+  - `frontend/dashboard.html`
+  - `frontend/js/veiculos.js`
+  - `frontend/js/motoristas.js`
+- **Arquivos modificados:**
+  - `LOGS.md`
