@@ -70,3 +70,22 @@
 - **Arquivos modificados:**
   - `backend/src/app.ts`
   - `LOGS.md`
+
+
+## Task 3.1 - Módulo de Motoristas
+- **Data:** 2026-11-03
+- **Branch:** `feat/fase3-dominio-frota`
+- **O que foi feito:**
+  - Criados os schemas Zod (`createMotoristaSchema`, `updateMotoristaSchema`) com validação e normalização de CPF (11 dígitos) e CNH (9 a 11 dígitos), além de data de vencimento da CNH.
+  - Implementado `MotoristaRepository` retornando veículos vinculados (`include: { veiculos: true }`) e baixa transacional que desvincula veículos (`responsavel_id = null`) ao inativar o motorista.
+  - Implementado `MotoristaService` com validação de unicidade de CPF/CNH, bloqueio de edição de motorista inativo (`ativo === false`) e baixa lógica (`ativo = false`).
+  - Implementados `MotoristaController` e `motorista.routes.ts` e registradas as rotas `/motoristas` em `src/app.ts`.
+- **Arquivos criados:**
+  - `backend/src/modules/motoristas/motorista.schema.ts`
+  - `backend/src/modules/motoristas/motorista.repository.ts`
+  - `backend/src/modules/motoristas/motorista.service.ts`
+  - `backend/src/modules/motoristas/motorista.controller.ts`
+  - `backend/src/modules/motoristas/motorista.routes.ts`
+- **Arquivos modificados:**
+  - `backend/src/app.ts`
+  - `LOGS.md`

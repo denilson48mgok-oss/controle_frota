@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import { authRoutes, usuarioRoutes } from './modules/usuarios/usuario.routes';
+import { motoristaRoutes } from './modules/motoristas/motorista.routes';
 
 export const app = express();
 
@@ -13,5 +14,6 @@ app.get('/health', (_req, res) => {
 
 app.use('/auth', authRoutes);
 app.use('/usuarios', usuarioRoutes);
+app.use('/motoristas', motoristaRoutes);
 
 export default app;
