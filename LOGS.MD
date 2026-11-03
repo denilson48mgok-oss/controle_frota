@@ -136,3 +136,18 @@
 - **Arquivos modificados:**
   - `backend/src/app.ts`
   - `LOGS.md`
+
+## Task 4.1 - Estrutura Base, Cliente HTTP e Tela de Login
+- **Data:** 2026-11-03
+- **Branch:** `feat/fase4-frontend-web`
+- **O que foi feito:**
+  - Criado o estilo base (`frontend/css/styles.css`) para login, dashboard e painel administrativo.
+  - Implementado `frontend/js/api.js` centralizando a URL base da API, injeção automática do header `Authorization: Bearer <token>` via `localStorage` e tratamento padronizado de erros HTTP (400, 401, 403).
+  - Implementados `frontend/index.html` e `frontend/js/auth.js` para autenticação em `POST /auth/login` e armazenamento de `token`, `perfil` (`MASTER`, `ADMIN`, `GERAL`) e `usuario` no `localStorage`.
+- **Arquivos criados:**
+  - `frontend/index.html`
+  - `frontend/css/styles.css`
+  - `frontend/js/api.js`
+  - `frontend/js/auth.js`
+- **Arquivos modificados:**
+  - `LOGS.md`
