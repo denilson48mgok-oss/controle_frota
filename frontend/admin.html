@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Controle de Frota - Painel Administrativo</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-brand">Painel Administrativo</div>
+    <nav class="topbar-nav">
+      <span id="admin-user-info" style="font-size: 0.9rem; color: var(--muted);"></span>
+      <a href="dashboard.html" class="btn btn-secondary btn-sm">Voltar ao Dashboard</a>
+      <button type="button" id="admin-logout-btn" class="btn btn-danger btn-sm">Sair</button>
+    </nav>
+  </header>
+
+  <main id="admin-main" class="container hidden">
+    <div id="admin-alert" class="alert" role="alert"></div>
+
+    <!-- Fila de Solicitações de Reativação -->
+    <section class="card">
+      <h2>Solicitações Pendentes de Reativação</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Entidade</th>
+              <th>Motivo</th>
+              <th>Solicitante</th>
+              <th>Status</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="reativacoes-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Gestão de Usuários -->
+    <section class="card">
+      <h2 id="usuario-form-title">Gerenciar Usuários</h2>
+      <form id="usuario-form" class="grid-form">
+        <input type="hidden" id="usuario-id" />
+        <div class="form-group">
+          <label for="usuario-nome">Nome</label>
+          <input type="text" id="usuario-nome" required placeholder="Nome completo" />
+        </div>
+        <div class="form-group">
+          <label for="usuario-login">Login</label>
+          <input type="text" id="usuario-login" required minlength="3" placeholder="Login" />
+        </div>
+        <div class="form-group">
+          <label for="usuario-cpf">CPF</label>
+          <input type="text" id="usuario-cpf" required placeholder="000.000.000-00" />
+        </div>
+        <div class="form-group">
+          <label for="usuario-senha">Senha</label>
+          <input type="password" id="usuario-senha" minlength="6" placeholder="Mínimo 6 caracteres" />
+        </div>
+        <div class="form-group">
+          <label for="usuario-perfil">Perfil</label>
+          <select id="usuario-perfil" required></select>
+        </div>
+        <div class="actions">
+          <button type="submit" id="usuario-submit-btn">Salvar Usuário</button>
+          <button type="button" id="usuario-cancel-btn" class="btn-secondary hidden">Cancelar</button>
+        </div>
+      </form>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Login</th>
+              <th>CPF</th>
+              <th>Perfil</th>
+              <th>Status</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="usuarios-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

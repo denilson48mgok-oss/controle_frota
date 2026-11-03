@@ -165,3 +165,16 @@
   - `frontend/js/motoristas.js`
 - **Arquivos modificados:**
   - `LOGS.md`
+
+## Task 4.3 - Painel Administrativo (Gestão de Usuários e Aprovação de Reativações)
+- **Data:** 2026-11-03
+- **Branch:** `feat/fase4-frontend-web`
+- **O que foi feito:**
+  - Criado `frontend/admin.html` e implementado `frontend/js/admin.js` com bloqueio de acesso e redirecionamento para `dashboard.html` caso o usuário logado tenha perfil `GERAL`.
+  - Implementado formulário de usuários que fixa o perfil em `GERAL` quando o usuário logado é `ADMIN` e permite selecionar `ADMIN` ou `GERAL` quando é `MASTER`, além de bloquear edição de usuários inativos.
+  - Implementada listagem de solicitações pendentes de reativação com botões `Aprovar` (`PATCH /reativacoes/:id/aprovar`) e `Rejeitar` (`PATCH /reativacoes/:id/rejeitar`).
+- **Arquivos criados:**
+  - `frontend/admin.html`
+  - `frontend/js/admin.js`
+- **Arquivos modificados:**
+  - `LOGS.md`
