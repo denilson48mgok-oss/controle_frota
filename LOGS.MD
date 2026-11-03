@@ -37,3 +37,18 @@
   - `backend/package-lock.json`
   - `backend/.env.example`
   - `LOGS.md`
+
+
+## Task 2.1 - Middlewares de Autenticação e Controle de Acesso (RBAC)
+- **Data:** 2026-11-03
+- **Branch:** `feat/fase2-autenticacao-usuarios`
+- **O que foi feito:**
+  - Criada classe de erro padronizada `AppError` em `src/utils/errors.ts`.
+  - Implementado `authMiddleware` para validar o token JWT no header `Authorization: Bearer <token>`, verificar o status ativo do usuário e anexar `req.user = { id, perfil, ativo }`.
+  - Implementado `roleMiddleware` (e guardas `requireMaster` e `requireMasterOrAdmin`) para restrição de rotas por perfil (`['MASTER']` e `['MASTER', 'ADMIN']`).
+- **Arquivos criados:**
+  - `backend/src/utils/errors.ts`
+  - `backend/src/middlewares/auth.middleware.ts`
+  - `backend/src/middlewares/role.middleware.ts`
+- **Arquivos modificados:**
+  - `LOGS.md`
