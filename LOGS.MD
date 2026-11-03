@@ -100,3 +100,21 @@
   - `backend/src/services/fipe.service.ts`
 - **Arquivos modificados:**
   - `LOGS.md`
+
+## Task 3.3 - Módulo de Veículos
+- **Data:** 2026-11-03
+- **Branch:** `feat/fase3-dominio-frota`
+- **O que foi feito:**
+  - Criados os schemas Zod (`createVeiculoSchema`, `updateVeiculoSchema`) com validação de placa (antiga e Mercosul), chassi, renavam, ano do modelo e campos opcionais `codigo_fipe` e `valor_venal`.
+  - Implementado `VeiculoRepository` retornando o motorista responsável (`include: { responsavel: true }`).
+  - Implementado `VeiculoService` com validação de unicidade (`placa`, `chassi`, `renavam`), validação de existência e status ativo do `responsavel_id`, integração com `fipeService` para preenchimento de `data_ipva` e `valor_ipva`, bloqueio de edição de veículo inativo (`ativo === false`) e baixa lógica (`PATCH /veiculos/:id/baixa`).
+  - Implementados `VeiculoController` e `veiculo.routes.ts` e registradas as rotas `/veiculos` em `src/app.ts`.
+- **Arquivos criados:**
+  - `backend/src/modules/veiculos/veiculo.schema.ts`
+  - `backend/src/modules/veiculos/veiculo.repository.ts`
+  - `backend/src/modules/veiculos/veiculo.service.ts`
+  - `backend/src/modules/veiculos/veiculo.controller.ts`
+  - `backend/src/modules/veiculos/veiculo.routes.ts`
+- **Arquivos modificados:**
+  - `backend/src/app.ts`
+  - `LOGS.md`
