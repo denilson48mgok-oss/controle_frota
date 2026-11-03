@@ -178,3 +178,13 @@
   - `frontend/js/admin.js`
 - **Arquivos modificados:**
   - `LOGS.md`
+
+## Documentação Final - Criação do README.md
+- **Data:** 2026-11-03
+- **Branch:** `feat/fase4-frontend-web`
+- **O que foi feito:**
+  - Criado o arquivo `README.md` na raiz do projeto com o guia passo a passo desde a instalação do PostgreSQL (Windows, Linux e Docker), configuração do `.env`, geração/push do Prisma e seed do usuário `MASTER`, até a execução simultânea do backend e frontend e roteiro completo de uso das funcionalidades.
+- **Arquivos criados:**
+  - `README.md`
+- **Arquivos modificados:**
+  - `LOGS.md`
