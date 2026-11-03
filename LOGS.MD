@@ -89,3 +89,14 @@
 - **Arquivos modificados:**
   - `backend/src/app.ts`
   - `LOGS.md`
+
+## Task 3.2 - Integração Externa FIPE e Cálculo de IPVA/Licenciamento
+- **Data:** 2026-11-03
+- **Branch:** `feat/fase3-dominio-frota`
+- **O que foi feito:**
+  - Implementado `FipeService` em `src/services/fipe.service.ts` para consulta de valor venal por código FIPE em API pública (com fallback para `valor_venal` informado manualmente).
+  - Criado método `calcularProximoIpva(valorVenal, finalPlaca)` que calcula 4% de IPVA estimado para controle orçamentário (destacando isenção de frota pública) e estima a próxima data de vencimento (`data_ipva`) conforme o último dígito da placa.
+- **Arquivos criados:**
+  - `backend/src/services/fipe.service.ts`
+- **Arquivos modificados:**
+  - `LOGS.md`
